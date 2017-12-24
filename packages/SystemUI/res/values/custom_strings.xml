@@ -54,4 +54,7 @@
 
     <!-- FPS view text placeholder -->
     <string name="fps_text_placeholder">FPS: %1$d</string>
+
+    <!-- CPUInfo tile -->
+    <string name="quick_settings_cpuinfo_label">CPU Info</string>
 </resources>

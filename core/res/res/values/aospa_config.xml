@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Copyright 2025 NeutronOS Android
+    Copyright 2023 Paranoid Android
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -15,18 +15,33 @@
     limitations under the License.
 -->
 <resources>
+
+    <!-- The list of components which should be automatically disabled for a specific device.
+         Note: this MUST not be used to randomly disable components, ask for approval first! -->
+    <string-array name="config_deviceDisabledComponents" translatable="false">
+    </string-array>
+
+    <!-- The list of components which should be automatically disabled for all devices. -->
+    <string-array name="config_globallyDisabledComponents" translatable="false">
+    </string-array>
+
+    <!-- The list of components which should be forced to be enabled. -->
+    <string-array name="config_forceEnabledComponents" translatable="false">
+    </string-array>
+
     <!-- Defines the sysfs attribute path used by the device
          to enable/disable DC dimming. -->
     <string name="config_deviceDcDimmingSysfsNode"></string>
- 
+
     <!-- Defines the value used by the device sysfs node
          to enable DC dimming -->
     <string name="config_deviceDcDimmingEnableValue">1</string>
- 
+
     <!-- Defines the value used by the device sysfs node
          to disable DC dimming -->
     <string name="config_deviceDcDimmingDisableValue">0</string>
 
     <!-- Whether device has an alert slider. -->
     <bool name="config_hasAlertSlider">false</bool>
+
 </resources>

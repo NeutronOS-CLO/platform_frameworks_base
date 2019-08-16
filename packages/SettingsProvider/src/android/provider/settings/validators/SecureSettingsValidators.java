@@ -441,5 +441,6 @@ public class SecureSettingsValidators {
         VALIDATORS.put(Secure.ON_DEVICE_INTELLIGENCE_IDLE_TIMEOUT_MS, NONE_NEGATIVE_LONG_VALIDATOR);
         VALIDATORS.put(Secure.VPN_ENFORCE_DNS, BOOLEAN_VALIDATOR);
         VALIDATORS.put(Secure.VPN_ENFORCE_DNS_STORE, new DiscreteValueValidator(new String[] {"-1", "0", "1", "2"}));
+        VALIDATORS.put(Secure.TETHERING_ALLOW_VPN_UPSTREAMS, BOOLEAN_VALIDATOR);
     }
 }

@@ -42,6 +42,9 @@ public class BootReceiver extends BroadcastReceiver {
 
         void observe() {
             mContext.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.SHOW_CPU_OVERLAY),
+                    false, this);
+            mContext.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.SHOW_FPS_OVERLAY),
                     false, this);
             update();
@@ -53,7 +56,13 @@ public class BootReceiver extends BroadcastReceiver {
         }
 
         public void update() {
+            Intent cpuinfo = new Intent(mContext, com.android.systemui.CPUInfoService.class);
             Intent fpsinfo = new Intent(mContext, com.android.systemui.FPSInfoService.class);
+            if (Settings.Secure.getInt(mContext.getContentResolver(), Settings.Secure.SHOW_CPU_OVERLAY, 0) != 0) {
+                mContext.startService(cpuinfo);
+            } else {
+                mContext.stopService(cpuinfo);
+            }
             if (Settings.Secure.getInt(mContext.getContentResolver(), Settings.Secure.SHOW_FPS_OVERLAY, 0) != 0) {
                 mContext.startService(fpsinfo);
             } else {
@@ -69,6 +78,12 @@ public class BootReceiver extends BroadcastReceiver {
             if (mSettingsObserver ==  null) {
                 mSettingsObserver = new SettingsObserver(mHandler);
                 mSettingsObserver.observe();
+            }
+
+            // Start the cpu info overlay, if activated
+            if (Settings.Secure.getInt(mContext.getContentResolver(), Settings.Secure.SHOW_CPU_OVERLAY, 0) != 0) {
+                Intent cpuinfo = new Intent(mContext, com.android.systemui.CPUInfoService.class);
+                mContext.startService(cpuinfo);
             }
 
             // Start the fps info overlay, if activated

@@ -18,6 +18,8 @@ package com.android.settingslib.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -40,6 +42,9 @@ public class MainSwitchPreference extends TwoStatePreference implements OnChecke
     private final List<OnCheckedChangeListener> mSwitchChangeListeners = new ArrayList<>();
 
     private MainSwitchBar mMainSwitchBar;
+
+    private Context mContext;
+    private Vibrator mVibrator;
 
     public MainSwitchPreference(Context context) {
         super(context);
@@ -94,6 +99,9 @@ public class MainSwitchPreference extends TwoStatePreference implements OnChecke
             setIconSpaceReserved(bIconSpaceReserved);
             a.recycle();
         }
+
+        mContext = context;
+        mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
@@ -123,6 +131,7 @@ public class MainSwitchPreference extends TwoStatePreference implements OnChecke
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         super.setChecked(isChecked);
+        mVibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_DOUBLE_CLICK));
     }
 
     /**

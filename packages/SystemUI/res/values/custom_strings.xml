@@ -51,4 +51,7 @@
 
     <!-- FPS Info tile -->
     <string name="quick_settings_fpsinfo_label">FPS Info</string>
+
+    <!-- FPS view text placeholder -->
+    <string name="fps_text_placeholder">FPS: %1$d</string>
 </resources>

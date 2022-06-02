@@ -6330,6 +6330,12 @@ public final class Settings {
          */
 
         /**
+         * Current status of whether gestures are locked
+         * @hide
+         */
+        public static final String LOCK_GESTURE_STATUS = "lock_gesture_status";
+
+        /**
          * Whether the phone vibrates on call connect
          * @hide
          */

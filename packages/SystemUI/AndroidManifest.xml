@@ -23,6 +23,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         coreApp="true">
 
+    <uses-permission android:name="lineageos.permission.HARDWARE_ABSTRACTION_ACCESS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <!-- Used to read wallpaper -->

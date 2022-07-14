@@ -27,6 +27,8 @@
              android:key="firewall"
              android:title="@string/status_bar_firewall" />
 
+    </PreferenceScreen>
+
     <PreferenceScreen
         android:key="volume_and_do_not_disturb"
         android:title="@string/volume_and_do_not_disturb">

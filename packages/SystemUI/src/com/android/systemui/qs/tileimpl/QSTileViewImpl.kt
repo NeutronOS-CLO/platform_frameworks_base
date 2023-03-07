@@ -37,6 +37,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -481,6 +482,13 @@ constructor(
     private fun init(click: OnClickListener?, longClick: OnLongClickListener?) {
         setOnClickListener(click)
         onLongClickListener = longClick
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (event.getActionMasked() == MotionEvent.ACTION_UP) {
+            performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+        }
+        return super.onTouchEvent(event)
     }
 
     override fun onStateChanged(state: QSTile.State) {

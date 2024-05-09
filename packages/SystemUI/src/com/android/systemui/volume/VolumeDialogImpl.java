@@ -1421,7 +1421,7 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
                 // directly in volume dialog, or drags slider to a value of 0 in settings.
                 break;
             default:
-                effect = VibrationEffect.get(VibrationEffect.EFFECT_DOUBLE_CLICK);
+                effect = VibrationEffect.get(VibrationEffect.EFFECT_THUD);
         }
         if (effect != null) {
             mController.vibrate(effect);
@@ -1861,7 +1861,7 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
                 && mState.ringerModeInternal != -1
                 && mState.ringerModeInternal != state.ringerModeInternal
                 && state.ringerModeInternal == AudioManager.RINGER_MODE_VIBRATE) {
-            mController.vibrate(VibrationEffect.get(VibrationEffect.EFFECT_DOUBLE_CLICK));
+            mController.vibrate(VibrationEffect.get(VibrationEffect.EFFECT_THUD));
         }
         mState = state;
         mDynamic.clear();

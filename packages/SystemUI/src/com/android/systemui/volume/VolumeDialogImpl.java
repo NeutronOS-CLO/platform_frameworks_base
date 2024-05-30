@@ -2566,6 +2566,10 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
                     mRow.requestedLevel = userLevel;
                     Events.writeEvent(Events.EVENT_TOUCH_LEVEL_CHANGED, mRow.stream,
                             userLevel);
+                    if (mRow.tracking) {
+                        // Log.d(TAG, "Progress-vol: " + progress + " Progress-level: " + userLevel + " Tracking: " + mRow.tracking);
+                        mController.vibrate(VibrationEffect.get(VibrationEffect.EFFECT_CLICK));
+                    }
                 }
             }
         }

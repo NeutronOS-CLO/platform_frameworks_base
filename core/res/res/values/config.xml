@@ -2673,8 +2673,10 @@
          This is not a registered IANA URI scheme. -->
     <string-array translatable="false" name="config_ntpServers">
         <item>ntp://time.cloudflare.com</item>
+	<item>ntp://time.nplindia.org</item>
         <item>ntp://time.android.com</item>
     </string-array>
+
     <!-- SNTP client config: Timeout to wait for an NTP server response in milliseconds. -->
     <integer name="config_ntpTimeout">5000</integer>
 

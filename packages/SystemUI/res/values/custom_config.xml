@@ -17,13 +17,13 @@
     <string name="config_fpsInfoSysNode" translatable="false">/sys/class/drm/sde-crtc-0/measured_fps</string>
 
     <!-- FPS measure interval in milliseconds, default 1000 -->
-    <integer name="config_fpsReadInterval">1000</integer>
+    <integer name="config_fpsReadInterval">300</integer>
 
     <!-- The CPU temperature sensor path, defaults to empty -->
-    <string name="config_cpuTempSensor" translatable="false">/sys/class/thermal/thermal_zone0/temp</string>
+    <string name="config_cpuTempSensor" translatable="false">/sys/class/thermal/thermal_zone1/temp</string>
 
     <!-- The CPU temperature divider, if needed -->
-    <integer name="config_cpuTempDivider" translatable="false">1</integer>
+    <integer name="config_cpuTempDivider" translatable="false">1000</integer>
 
     <!-- The CPUs to display in CPUInfoService view -->
     <string name="config_displayCpus" translatable="false"></string>

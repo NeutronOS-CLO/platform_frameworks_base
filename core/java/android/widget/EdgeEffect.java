@@ -146,7 +146,7 @@ public class EdgeEffect {
 
     private static final float LINEAR_STRETCH_INTENSITY = 0.016f;
 
-    private static final float EXP_STRETCH_INTENSITY = 0.016f;
+    private static final float EXP_STRETCH_INTENSITY = 0.040f;
 
     private static final float SCROLL_DIST_AFFECTED_BY_EXP_STRETCH = 0.33f;
 

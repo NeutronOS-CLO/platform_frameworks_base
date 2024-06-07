@@ -3786,12 +3786,12 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
     private void maybeVibrateOnOpening(boolean openingWithTouch) {
         if (mVibrateOnOpening && mBarState != KEYGUARD && mBarState != SHADE_LOCKED) {
             if (!openingWithTouch || !mHasVibratedOnOpen) {
-                mVibratorHelper.performHapticFeedback(
-                        mView,
-                        HapticFeedbackConstants.GESTURE_START
-                );
-                mHasVibratedOnOpen = true;
-                mShadeLog.v("Vibrating on opening, mHasVibratedOnOpen=true");
+//                mVibratorHelper.performHapticFeedback(
+//                       mView,
+//                        HapticFeedbackConstants.GESTURE_START
+//                );
+                mHasVibratedOnOpen = false;
+//                mShadeLog.v("Vibrating on opening, mHasVibratedOnOpen=true");
             }
         }
     }

@@ -513,7 +513,7 @@
         <item name="onSurfaceVariant">?androidprv:attr/materialColorOnSurfaceVariant</item>
         <item name="outline">?androidprv:attr/materialColorOutline</item>
 
-        <item name="shadeActive">@color/material_dynamic_primary90</item>
+        <item name="shadeActive">@color/material_dynamic_primary80</item>
         <item name="onShadeActive">@color/material_dynamic_primary10</item>
         <item name="onShadeActiveVariant">@color/material_dynamic_primary30</item>
         <item name="shadeInactive">@color/material_dynamic_neutral20</item>

@@ -51,7 +51,7 @@ import com.android.systemui.util.settings.GlobalSettings;
 import javax.inject.Inject;
 
 /** Quick settings tile: DNS Tile **/
-public class DnsTile extends SecureQSTile<BooleanState> {
+public class DnsTile extends QSTileImpl<BooleanState> {
 
     public static final String TILE_SPEC = "dns";
     private static final String KEY_PREV_MODE = "dns_tile_prev_mode";

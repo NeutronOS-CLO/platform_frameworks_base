@@ -191,9 +191,7 @@ public class PhoneStatusBarPolicy
     private BluetoothController mBluetooth;
     private AlarmManager.AlarmClockInfo mNextAlarm;
     private final Context mContext;
-
     private NfcAdapter mAdapter;
-    private final Context mContext;
 
     @Inject
     public PhoneStatusBarPolicy(Context context, StatusBarIconController iconController,

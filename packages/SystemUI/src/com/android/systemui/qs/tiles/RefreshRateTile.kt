@@ -25,12 +25,13 @@ import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.provider.DeviceConfig
+import android.provider.Settings
 import android.provider.Settings.System.MIN_REFRESH_RATE
 import android.provider.Settings.System.PEAK_REFRESH_RATE
 import android.service.quicksettings.Tile
 import android.util.Log
 import android.view.Display
-import android.view.View
+import com.android.systemui.animation.Expandable
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent
 import com.android.internal.logging.MetricsLogger
@@ -121,7 +122,7 @@ class RefreshRateTile @Inject constructor(
         settingsObserver.observe()
     }
 
-    override protected fun handleClick(view: View?) {
+    override fun handleClick(expandable: Expandable?) {
         logD("handleClick")
         refreshRateMode = getNextMode(refreshRateMode)
         logD("refreshRateMode = $refreshRateMode")
@@ -218,14 +219,17 @@ class RefreshRateTile @Inject constructor(
         fun observe() {
             if (isObserving) return
             isObserving = true
-            systemSettings.registerContentObserver(MIN_REFRESH_RATE, this)
-            systemSettings.registerContentObserver(PEAK_REFRESH_RATE, this)
+            val contentResolver = mContext.contentResolver
+            contentResolver.registerContentObserver(
+                Settings.System.getUriFor(MIN_REFRESH_RATE), false, this)
+            contentResolver.registerContentObserver(
+                Settings.System.getUriFor(PEAK_REFRESH_RATE), false, this)
         }
 
         fun unobserve() {
             if (!isObserving) return
             isObserving = false
-            systemSettings.unregisterContentObserver(this)
+            mContext.contentResolver.unregisterContentObserver(this)
         }
     }
 

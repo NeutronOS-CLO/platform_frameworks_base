@@ -27,7 +27,7 @@ import com.android.systemui.plugins.DarkIconDispatcher;
 import com.android.systemui.plugins.DarkIconDispatcher.DarkReceiver;
 import com.android.systemui.res.R;
 
-import org.lineageos.internal.statusbar.LineageStatusBarItem;
+import com.android.systemui.statusbar.policy.LineageStatusBarItem;
 
 import java.util.ArrayList;
 

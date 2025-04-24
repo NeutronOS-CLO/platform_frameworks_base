@@ -44,6 +44,7 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.res.R;
+import com.android.systemui.animation.Expandable;
 
 import javax.inject.Inject;
 
@@ -102,15 +103,10 @@ public class CompassTile extends QSTileImpl<BooleanState> implements SensorEvent
     }
 
     @Override
-    protected void handleClick(@Nullable View view) {
+    protected void handleClick(@Nullable Expandable expandable) {
         mActive = !mActive;
         refreshState();
         setListeningSensors(mActive);
-    }
-
-    @Override
-    public void handleLongClick(@Nullable View view) {
-        handleClick(view);
     }
 
     @Override
@@ -174,7 +170,7 @@ public class CompassTile extends QSTileImpl<BooleanState> implements SensorEvent
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.EVOLVER;
+        return MetricsEvent.CUSTOM;
     }
 
     @Override

@@ -47,6 +47,7 @@ import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.util.settings.GlobalSettings;
+import com.android.systemui.animation.Expandable;
 
 import javax.inject.Inject;
 
@@ -58,6 +59,7 @@ public class DnsTile extends QSTileImpl<BooleanState> {
 
     private final SettingObserver mSetting;
     private boolean mListening;
+    private final GlobalSettings mGlobalSettings;
 
     @Inject
     public DnsTile(
@@ -70,11 +72,9 @@ public class DnsTile extends QSTileImpl<BooleanState> {
             StatusBarStateController statusBarStateController,
             ActivityStarter activityStarter,
             QSLogger qsLogger,
-            GlobalSettings globalSettings,
-            KeyguardStateController keyguardStateController
-    ) {
-        super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
-                statusBarStateController, activityStarter, qsLogger, keyguardStateController);
+            GlobalSettings globalSettings) {
+        super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger, statusBarStateController, activityStarter, qsLogger);
+        mGlobalSettings = globalSettings;
         mSetting = new SettingObserver(globalSettings, mHandler, Settings.Global.PRIVATE_DNS_MODE) {
             @Override
             protected void handleValueChanged(int value, boolean observedChange) {
@@ -110,11 +110,7 @@ public class DnsTile extends QSTileImpl<BooleanState> {
     }
 
     @Override
-    protected void handleClick(@Nullable View view, boolean keyguardShowing) {
-        if (checkKeyguard(view, keyguardShowing)) {
-            return;
-        }
-
+    protected void handleClick(@Nullable Expandable expandable) {
         // don't toggle if not needed, just refresh state instead
         final int mode = ConnectivitySettingsManager.getPrivateDnsMode(mContext);
         final boolean stateEnabled = mState.value;
@@ -151,7 +147,7 @@ public class DnsTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.EVOLVER;
+        return MetricsEvent.CUSTOM;
     }
 
     private String getSecondaryLabel(int mode) {
